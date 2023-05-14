@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 
 all_data = []
 full_data = []
@@ -36,3 +37,8 @@ for index,row in enumerate(full_data[1:]):
 
 for row in full_data[1:]:
     gravity.append(cal_gravity(row[2], row[3]))
+
+df = pd.read_csv('main.csv')
+df.insert(df.columns, "Gravity", gravity)
+
+df.to_csv('final_with_gravity.csv')
